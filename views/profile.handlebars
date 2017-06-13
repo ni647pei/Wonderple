@@ -1,0 +1,118 @@
+<html>
+<head>
+  
+  <meta charset="utf-8">
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+     
+    <style>
+                
+        .fake{
+            width: 200%;
+            position: fixed;
+            left: 0px;
+            top: 0px;            
+        }
+       body{
+            height: 615px;
+        }
+        .tag{
+            position: fixed;
+            top: 1%;
+            z-index: 2;
+            height: 34px;
+        }
+        #hero_on{
+            position: fixed;
+            left: 30%;
+            top: 1%;
+            height: 34px;
+            
+        }
+        #hero_off{
+            position: fixed;
+            top: -15px;
+            left: 43%;
+            color: white;
+            font-family: Arial;
+            font-size: 18px;
+            z-index: 3;
+            opacity: 0;
+        }
+        #citi_on{
+            position: fixed;
+            top: 1%;
+            left: 75%;
+            height: 34px;
+            opacity: 0;    
+        }
+        #citi_off{
+            position: fixed;
+            top: -15px;
+            left: 88%;
+            height: 34px;
+            color: white;
+            font-family: Arial;
+            font-size: 18px;
+            
+        }
+    </style>
+   
+</head>
+<body>
+    <div class="tag">
+        <img id="hero_on" src="/image/tag_hero.png">
+        <h5 id="hero_off">Hero</h5>
+        <img id="citi_on" src="/image/tag_citizen.png">
+        <h5 id="citi_off">Citizen</h5>
+        </div>
+        
+    </div>
+    <div>
+        <img class="fake" src="/image/profile.png">
+    </div>    
+    
+    <div class="nav">
+        <a href="/ask" data-ajax="false"><img class="ask" src="/image/main/ask_grey.png"></a>
+        <a href="/map" data-ajax="false"><img class="map" src="/image/main/map.png"></a>
+        <img class="profile" src="/image/main/profile_red.png">
+    </div>
+    
+ 
+    <script>
+        $("body").on("swipeleft",function(){
+            $(".fake").animate({left:'-100%'});
+            $("#citi_on").animate({left: '30%', opacity: '1'});
+            $("#citi_off").animate({left: '43%', opacity: '0'});
+            $("#hero_on").animate({left: '0', opacity: '0'});
+            $("#hero_off").animate({left: '1%', opacity: '1'});                          
+        });    
+        
+        $( "#citi_off" ).click(function() {
+            $(".fake").animate({left:'-100%'});
+            $("#citi_on").animate({left: '30%', opacity: '1'});
+            $("#citi_off").animate({left: '43%', opacity: '0'});
+            $("#hero_on").animate({left: '0', opacity: '0'});
+            $("#hero_off").animate({left: '1%', opacity: '1'}); 
+        });
+        
+        $("body").on("swiperight",function(){
+            $(".fake").animate({left:'0'});
+            $("#citi_on").animate({left: '75%', opacity: '0'});
+            $("#citi_off").animate({left: '88%', opacity: '1'});
+            $("#hero_on").animate({left: '30%', opacity: '1'});
+            $("#hero_off").animate({left: '43%', opacity: '0'});
+        });  
+        
+        $( "#hero_off" ).click(function() {
+            $(".fake").animate({left:'0'});
+            $("#citi_on").animate({left: '75%', opacity: '0'});
+            $("#citi_off").animate({left: '88%', opacity: '1'});
+            $("#hero_on").animate({left: '30%', opacity: '1'});
+            $("#hero_off").animate({left: '43%', opacity: '0'});
+        });  
+    </script>
+        
+    
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Posting</title>
+  <meta charset="utf-8">
+     
+    <style>
+        
+        .bubble{
+            margin-top: 100px;
+            margin-left: 8%;
+            margin-right: 8%;
+            background: url("image/bubble.png") no-repeat center ;
+            padding: 10px 10px 50px 10px;            
+            background-size:contain;
+        }
+        .bubble p{
+            margin: 50px 35px 50px 40px;
+            font-size: 18px;
+            font-family: Handlee, Handlee-Regular;
+           
+        }
+        .stop{
+            position: fixed;
+            top: 10px;
+            right: 5%;
+            bottom: 0px;
+            width: 34px;
+            height: 34px;
+        }
+        .posted{
+            margin-top: 15px;
+            margin-left: 33%;
+            width: 35%;
+        }
+        
+        
+       
+    </style>
+   
+</head>
+<body>
+    
+    <div class="main">
+        <div class="bubble">
+            <p>{{message}}</p>
+        </div>
+        <a href="/ask">
+            <img class="stop" src="/image/stop.png"></a>
+        
+        <img class="posted" src="/image/posted.png">
+    
+    </div>
+    <div class="nav">
+        <a href="/ask">
+            <img class="ask" src="/image/main/ask.png"></a>
+        
+        <a href="/map"><img class="map" src="/image/main/map.png"></a>
+        <a href="/profile"><img class="profile" src="/image/main/profile.png"></a>
+    </div>
+  
+</body>
+</html>

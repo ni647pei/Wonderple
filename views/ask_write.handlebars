@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>write your own question</title>
+  <meta charset="utf-8">
+     
+    <style>
+        body{
+            background-color: #E0E0E0;
+        }
+        .back {
+            position: fixed;
+            top: 15px;
+            left: 5%;
+            width: 25px;
+         }
+        h3{
+            font: bold 17px arial, sans-serif;
+            color: white;
+            margin-left: 15%;
+        }
+        
+        .bar{
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            bottom: 0;
+            width: 100%;
+            max-width: 415px;
+        }
+        .main{
+            margin: auto;
+        }
+        .main p{
+            font: 17px arial, sans-serif;
+            color: black;
+            margin-top: 80px;
+            text-align: center;
+        }
+        select {
+            width: 90%;
+            height: 40px;
+            margin-left: 5%;
+            margin-top: -10px;
+            padding: 5px ;
+            border: 2px solid #BB070E;
+            border-radius: 7px;
+            background-color: #E0E0E0;
+            font: bold 18px arial, sans-serif;
+            color: #BB070E;
+            text-align: center;
+            outline: none;
+            text-align-last:center;
+        }
+        option{
+            text-align-last:center;
+        }
+        button{
+            background-color: #FFE63A; 
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 7px 10px;
+            text-align: center;
+            font: bold 17px arial, sans-serif;
+            margin: 4px 2px;
+            position: fixed;
+            top: 5px;
+            right: 2%;
+            cursor: pointer;
+            outline: none;
+        }
+                
+        textarea {
+            width: 90%;
+            margin-top: 20px;
+            margin-left: 5%;
+            height: 120px;
+            padding: 12px 15px;
+            box-sizing: border-box;
+            border: 2px solid #636363;
+            border-radius: 7px;
+            background-color: #f8f8f8;
+            color: black;
+            font-size: 16px;
+            font-family: Handlee, Handlee-Regular;
+            resize: none;
+            outline: none;
+            
+        }
+        textarea:focus{
+            color:black;
+        }
+        
+        
+       
+    </style>
+   
+</head>
+<body>
+    <div class="header">
+        <a href="/ask"><img class="back" src="/image/back.png"></a>
+        <h3>Write your own question</h3>        
+    </div>
+    
+    <div class="main">
+        <p>This question is about</p>
+                
+        <form action="/question" method="POST" id="write">
+            <select id="option" name="category">
+                <option value="food">Food</option>
+                <option value="spot">Attraction</option>
+                <option value="rest">Place to rest</option>
+                <option value="activity">Activity</option>
+                <option value="friend">Friendship</option>
+                <option value="shopping">Shopping</option>
+            </select>
+            <div>
+                <button type="submit">Post</button>
+            </div>
+        </form>
+        <textarea name="message" form="write">{{message}}</textarea>
+    </div>
+    <div>
+        <img class="bar" src="/image/write_bar.png">
+    
+    </div>
+  
+</body>
+</html>

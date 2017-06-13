@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+     
+    <style>
+        
+        #map {
+            height: 100%;
+            z-index: -1;
+           
+      }
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            
+            padding: 0;
+      }
+        #super{
+            height: 10%;
+        }
+        
+        .near{
+            width: 100%;
+            height: 50px;
+            background-color: #61BFDB;
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-family: 'OCRAStd';
+            color: white;
+            padding-left: 15px;
+            z-index: 6;
+        }
+        .near img{
+            width: 40px;
+            z-index: 7;
+            position: fixed;
+            top: 6px;
+            left: 120px;
+            
+        }
+        
+        #india{
+            z-index: 6;
+            width: 57px;
+            position: fixed;
+            top: 30%;
+            right: 10%;
+        }
+        .citizen_cover{
+          background-color: #50C5FF;
+          width:100%;
+          height:100%;
+          z-index: 10;
+          position: fixed;
+          top: 0%;
+          left: 0%;
+          opacity: 0.9;
+        }
+        
+        .citizen{
+            display: none;
+            
+        }
+        #info{
+            width:283px;
+            position: fixed;
+            left:10%;
+            top:22%;
+            
+            z-index: 11;
+               
+        }
+        #back{
+            width: 32px;
+            position: fixed;
+            left:22%;
+            top:76%;
+            z-index: 11;
+            
+        }
+        #help{
+            width: 110px;
+            position: fixed;
+            right:15%;
+            top:70%;
+            z-index: 11;
+            
+        }
+        #switchAR{
+            width:51px;
+            position: fixed;
+            right:4%;
+            top:3%;
+            z-index: 11;
+        }
+        
+        .hire{
+            background: url("image/hire.png") no-repeat center ;
+            background-size:100% 100%;
+            position: fixed;
+            z-index: 21;
+            top: 150px;
+            left: 6%;
+            display: none;
+            height: 300px;
+            width: 300px;
+            
+            
+        }
+        #close{
+            width: 25px;
+            z-index: 10;
+            position: fixed;
+            margin-top: 20px;
+            margin-left: 260px;            
+            
+        }
+        .hireMessage{
+            position: fixed;
+            margin-top: 120px;
+            margin-left: 135px;  
+            font-family: Arial;
+            font-size: 17px;
+            
+            
+        }
+        .hireMessage a{
+            color: #BB070E;
+            
+        }
+        .cover{
+          background-color: black;
+          width:100%;
+          height:100%;
+          display: none;          
+          z-index: 20;
+          position: fixed;
+          top: 0%;
+          left: 0%;
+        }
+       
+    </style>
+   
+</head>
+<body>
+     
+    <div class="near"><p>Near by:</p><img src="/image/india.png"></div>
+    <div><img id="india" src="/image/india.png"></div>
+    
+    <!---------------------- check citizen ------------------------>
+    
+    
+    <div class="citizen">
+        <div class="citizen_cover"></div> 
+        <img id="info" src="/image/citizen.png">
+        <img id="back" src="/image/back.png">
+        <img id="help" src="/image/help.png">
+        <img id="switchAR" src="/image/ar.png">
+    </div>
+ 
+    <script>
+        $( "#india" ).click(function() {
+            $(this).fadeOut();
+            $(".near").fadeOut();
+            $(".citizen").fadeIn(500);             
+        });
+        $( "#back" ).click(function() {
+            $(".citizen").fadeOut(500); 
+            $('#india, .near').fadeIn();
+        });
+    </script>
+    
+    <!------------------------------------------------------------------>
+    
+    <div class="nav">
+        <a href="/ask"><img class="ask" src="/image/main/ask_grey.png"></a>
+        <img class="map" src="/image/main/map_red.png">
+        <a href="/profile"><img class="profile" src="/image/main/profile.png"></a>
+    </div>
+    
+    
+    
+    <div id="map"></div>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 17
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        var marker = new google.maps.Marker({icon: "/image/superman.png"});
+          //marker.style.width = "20%";
+          marker.setMap(map);
+          
+      
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            marker.setPosition(pos);
+            //infoWindow.setContent('Location found.');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, marker, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, marker, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKb9pTUgQvG6fCYE0iErehvxckL0GtXa4&callback=initMap">
+    </script>
+    
+    <!----------------------under construction------------------------>
+    
+    <div class="cover"></div>    
+    <div class="hire">
+        <img id="close" src="/image/close.png">
+        <div class="hireMessage">
+            <p>Come join us <br>to complete our <br>AR function! </p>
+            <a href="https://youtu.be/TqC5j7Pnwck">Learn more...</a>
+        </div>    
+    </div>
+ 
+    <script>
+        $( "#switchAR, #help" ).click(function() {
+            $(".hire").fadeIn();             
+            $(".cover").fadeIn()
+                .fadeTo(500,0.8);
+        });
+        $( "#close" ).click(function() {
+            $(".hire").fadeOut();             
+            $(".cover").fadeOut(500);
+        });
+    </script>
+</body>
+</html>

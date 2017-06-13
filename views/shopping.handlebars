@@ -1,0 +1,191 @@
+<html>
+<head>
+  
+  <meta charset="utf-8">
+     
+    <style>
+        .search_add {
+            position: fixed;
+            top: 10px;
+            right: 5%;
+            bottom: 0px;
+            width: 34px;
+            height: 34px;
+        }
+        
+        .w-form {
+            margin: 0 0 15px;
+            }
+        input[type=text] {
+            color: white;
+            background-image: url('/image/search.png');
+            background-position: 10px 12px; 
+            background-repeat: no-repeat;
+            background-size: 20px;
+            padding-left: 40px;
+            outline: none;
+        }
+        ::-webkit-input-placeholder { 
+            color: hsla(0, 0%, 100%, .74);
+            
+        }
+        .main{
+            margin-left: 3%;
+            
+            margin-top: 80px;
+            margin-bottom: 90px;
+        }
+        .bubble{
+            
+            margin-left: 8%;
+            margin-right: 8%;
+            margin-bottom: 10px;
+            background: url("image/bubble.png") no-repeat center ;
+            padding: 10px 5px 20px 5px;            
+            background-size:contain;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .bubble:focus {
+            outline: none;
+        }
+        .bubble p{
+            margin: 40px 40px 50px 40px;
+            font-size: 18px;
+            font-family: Handlee, Handlee-Regular;
+            outline: none;
+           
+        }
+        
+        .add{
+            position: fixed;
+            bottom: 80px;
+            right: 5%;
+            width: 80px;
+        }
+        
+        .link-button {
+            background: none;
+            border: none;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            
+           
+        }
+        .link-button:focus {
+            outline: none;
+        }
+        .link-button:active {
+            color:red;
+        }
+        
+        .hire{
+            background: url("image/hire.png") no-repeat center ;
+            background-size:100% 100%;
+            position: fixed;
+            z-index: 6;
+            top: 150px;
+            left: 6%;
+            display: none;
+            height: 300px;
+            width: 300px;
+            
+            
+        }
+        #close{
+            width: 25px;
+            z-index: 10;
+            position: fixed;
+            margin-top: 20px;
+            margin-left: 260px;            
+            
+        }
+        .hireMessage{
+            position: fixed;
+            margin-top: 120px;
+            margin-left: 135px;  
+            font-family: Arial;
+            font-size: 17px;
+            
+            
+        }
+        .hireMessage a{
+            color: #BB070E;
+            
+        }
+        .cover{
+          background-color: black;
+          width:100%;
+          height:100%;
+          display: none;
+          
+          z-index: 5;
+          position: fixed;
+          top: 0%;
+          left: 0%;
+        }
+       
+       
+    </style>
+   
+</head>
+<body>
+    <div class="header">
+        <a id="filter">
+            <img class="search_add" src="/image/filter.png"></a>
+        <div class="w-form">
+            <form data-name="search" id="wf-form-search" name="wf-form-search">
+                <input class="search w-input" data-name="search" id="search" maxlength="256" name="search" placeholder="Search for keywords..." onfocus="this.placeholder=''" onblur="this.placeholder='Search for keywords...'" type="text"></form>
+            <div class="w-form-done"></div>
+        </div>
+    </div>
+    <div class="main">
+        <a href="/ask/write"><img class="add" src="/image/write2.png"></a>
+        
+        
+        {{#each rows}}
+        <form method="POST" action="/ask/write" class="inline">
+            
+            <input type="hidden" name="message" value="{{this.Message}}" >
+            <button class="bubble" type="submit" name="submit_param" value="submit_value">
+                <p>{{this.Message}}</p>
+            </button>
+          
+        </form>
+        {{/each}}
+        
+    </div>
+    <div class="nav">
+        <a href="/ask"><img class="ask" src="/image/main/ask.png"></a>
+        <a href="/map"><img class="map" src="/image/main/map.png"></a>
+        <a href="/profile"><img class="profile" src="/image/main/profile.png"></a>
+    </div>
+    
+    <!----------------------under construction------------------------>
+    
+    <div class="cover"></div>    
+    <div class="hire">
+        <img id="close" src="/image/close.png">
+        <div class="hireMessage">
+            <p>Come join us <br>to complete our <br>filter function! </p>
+            <a href="https://youtu.be/TqC5j7Pnwck">Learn more...</a>
+        </div>    
+    </div>
+ 
+    <script>
+        $( "#filter, #search" ).click(function() {
+            $(".hire").fadeIn();             
+            $(".cover").fadeIn()
+                .fadeTo(500,0.8);
+        });
+        $( "#close" ).click(function() {
+            $(".hire").fadeOut();             
+            $(".cover").fadeOut(500);
+        });
+    </script>
+  
+    
+</body>
+</html>

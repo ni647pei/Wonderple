@@ -1,0 +1,27 @@
+
+@font-face{
+        font-family: Handlee-Regular;
+        src: url('Handlee-Regular.ttf')
+        }
+
+@font-face{
+        font-family: OCRAStd;
+        src: url('OCRAStd.otf')
+        }
+
+
+@media (min-width: 415px) {
+  body {
+    display: none;
+  }
+}
+@media (max-width: 414px) {
+  body{
+    display: block;
+    background-color: #0099f7;
+  }
+@media (max-width: 320px) {
+  body{
+    display: none;
+  }
+
